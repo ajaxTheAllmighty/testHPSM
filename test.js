@@ -63,11 +63,30 @@ function setUpdateDate(newRecord){
 }
 
 
+function testOp(){
+	print(system.functions.operator());
+}
+
+function whoUpdated(newRecord){
+	newRecord['updOperator'] = system.functions.operator();
+	system.functions.operator();
+	return newRecord;
+}
+
+function printOPs(newRecord){
+	var ops = newRecord['operators'].toArray();
+	for(var currentOp = 0; currentOp < ops.length; currentOp++){
+		if(ops[currentOp].match(/falcon.*/)){
+			print('falcon here')
+		}
+	}
+}
 
 
-
-
-
+/*$fill.search.format="contacts.search";
+if (not  (null(contact.name in $File))) then ($query="contact.name#contact.name in $File") else ($query="true")
+if ($G.multi and not  (null(company in $File))) then ($query=$query+" and company=\""+evaluate(company in $File)+"\"")
+if $query#"true and " then ($L.void=strclpl($query, 9))
 
 /*print (SCFQuery());
 print($Query());
