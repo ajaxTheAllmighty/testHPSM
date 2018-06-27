@@ -215,10 +215,8 @@ function myLink(fRecord,fieldName,linkName,boolean1){
 function buildHTML(){
 	var sCR = "\n";
 	var sHtmlReturn = getCSS();
-	var data = new Array;
-	var query = lib.c.$('infFilials').select('*').iterate(function(item){
-	data.push(item);
-	});
+	print(vars['$L.file']);
+	var query = lib.c.$('infFilials').select("name = "+vars['$L.file.name']).uniqueResult();
 	var i;
 	var active;
 		sHtmlReturn += "<table class=\"main\">" + sCR;
@@ -231,24 +229,22 @@ function buildHTML(){
 		sHtmlReturn += "<th><div tabindex=\"0\"> Кем обновлено </div></th>";
 		//sHtmlReturn += "<th><div tabindex=\"0\"> Операторы</div></th></tr>";
 
-	for (var recrod in data) {
-		var sRowClass = i%2==0 ? "evenRow" : "oddRow";
-		if(record['isActive']){
+		if(!query['isActive']==null){
 			active = "ДА"
 		}
 		else{
 			active = "НЕН"
 		}
 			sHtmlReturn += "<tr>";
-			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+record['name']+"</td>";            
-			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+record['dateCreated']+"</td>";
-			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+record['dateUpdated']+"</td>";
+			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+query['name']+"</td>";            
+			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+query['dateCreated']+"</td>";
+			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+query['dateUpdated']+"</td>";
 			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+active+"</td>";
-			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+record['contact']+"</td>";
-			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+record['whoUpdated']+"</td>";
+			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+query['contact']+"</td>";
+			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+query['whoUpdated']+"</td>";
 			//sHtmlReturn += "<td class=\""+sRowClass+"\" >"+fnull(attrib[j+5])+"</td>";
 			sHtmlReturn += "<tr>";
-	}
+
 			sHtmlReturn += "</table>" + sCR;
 return sHtmlReturn;
 
