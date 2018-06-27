@@ -1,3 +1,20 @@
+Skip to content
+ 
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ @ajaxTheAllmighty Sign out
+0
+0 0 ajaxTheAllmighty/testHPSM
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights  Settings
+testHPSM/test.js
+de99ded  31 minutes ago
+@ajaxTheAllmighty ajaxTheAllmighty build html
+     
+273 lines (230 sloc)  7.66 KB
 //SD99944
 
 
@@ -87,7 +104,6 @@ function printOPs(newRecord){
 if (not  (null(contact.name in $File))) then ($query="contact.name#contact.name in $File") else ($query="true")
 if ($G.multi and not  (null(company in $File))) then ($query=$query+" and company=\""+evaluate(company in $File)+"\"")
 if $query#"true and " then ($L.void=strclpl($query, 9))
-
 /*print (SCFQuery());
 print($Query());
 SCFMultipleQueries();
@@ -216,7 +232,7 @@ function buildHTML(){
 	var sCR = "\n";
 	var sHtmlReturn = getCSS();
 	var data = new Array;
-	var query = lib.c.$('infFilials').select('*').iterate(function(item){
+	var query = lib.c.$('infFilials').select('name#*').iterate(function(item){
 	data.push(item);
 	});
 	var i;
@@ -271,3 +287,16 @@ function getCSS(){
 	return style;
 
 }
+© 2018 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+API
+Training
+Shop
+Blog
+About
+Press h to open a hovercard with more details.
