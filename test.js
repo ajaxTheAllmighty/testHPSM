@@ -225,7 +225,7 @@ function buildHTML(){
 				cnt++;
 			}while(file.getNext() == RC_SUCCESS)
 		}
-	print(data);
+	//print(data);
 	var active;
 		sHtmlReturn += "<table class=\"main\">" + sCR;
 		// Table header          
@@ -244,15 +244,40 @@ function buildHTML(){
 			active = "ДА"
 		}
 		else{
-			active = "НЕН"
+			active = "НЕT"
 		}
 			sHtmlReturn += "<tr>";
-			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['name']+"</td>";            
-			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['dateCreated']+"</td>";
-			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['dateUpdated']+"</td>";
+			if(data[i]['name']!=null){
+				sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['name']+"</td>";    
+			}
+			else{
+				sHtmlReturn += "<td class=\""+sRowClass+"\" > </td>";    
+			}
+			if(data[i]['dateCreated']!=null){
+				sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['dateCreated']+"</td>";    
+			}
+			else{
+				sHtmlReturn += "<td class=\""+sRowClass+"\" > </td>";    
+			}
+			if(data[i]['dateUpdated']!=null){
+				sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['dateUpdated']+"</td>";    
+			}
+			else{
+				sHtmlReturn += "<td class=\""+sRowClass+"\" > </td>"; 
+			}   
 			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+active+"</td>";
-			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['contact']+"</td>";
-			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['whoUpdated']+"</td>";
+			if(data[i]['contact']!=null){
+				sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['contact']+"</td>";    
+			}
+			else{
+				sHtmlReturn += "<td class=\""+sRowClass+"\" > </td>"; 
+			}
+			if(data[i]['whoUpdated']!=null){
+				sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['whoUpdated']+"</td>";    
+			}
+			else{
+				sHtmlReturn += "<td class=\""+sRowClass+"\" > </td>"; 
+			}
 			//sHtmlReturn += "<td class=\""+sRowClass+"\" >"+fnull(attrib[j+5])+"</td>";
 			sHtmlReturn += "<tr>";
 	}
