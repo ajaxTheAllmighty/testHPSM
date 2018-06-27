@@ -232,10 +232,9 @@ function buildHTML(){
 	var sCR = "\n";
 	var sHtmlReturn = getCSS();
 	var data = new Array;
-	var query = lib.c.$('infFilials').select('name#*').iterate(function(item){
+	var query = lib.c.$('infFilials').select('name#"*"').iterate(function(item){
 	data.push(item);
 	});
-	var i;
 	var active;
 		sHtmlReturn += "<table class=\"main\">" + sCR;
 		// Table header          
@@ -247,21 +246,22 @@ function buildHTML(){
 		sHtmlReturn += "<th><div tabindex=\"0\"> Кем обновлено </div></th>";
 		//sHtmlReturn += "<th><div tabindex=\"0\"> Операторы</div></th></tr>";
 
-	for (var recrod in data) {
+	for (var i =0; i<data.length; i++) {
+	//print(data[i]);
 		var sRowClass = i%2==0 ? "evenRow" : "oddRow";
-		if(record['isActive']){
+		if(data[i]['isActive']){
 			active = "ДА"
 		}
 		else{
 			active = "НЕН"
 		}
 			sHtmlReturn += "<tr>";
-			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+record['name']+"</td>";            
-			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+record['dateCreated']+"</td>";
-			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+record['dateUpdated']+"</td>";
+			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['name']+"</td>";            
+			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['dateCreated']+"</td>";
+			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['dateUpdated']+"</td>";
 			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+active+"</td>";
-			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+record['contact']+"</td>";
-			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+record['whoUpdated']+"</td>";
+			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['contact']+"</td>";
+			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['whoUpdated']+"</td>";
 			//sHtmlReturn += "<td class=\""+sRowClass+"\" >"+fnull(attrib[j+5])+"</td>";
 			sHtmlReturn += "<tr>";
 	}
@@ -287,16 +287,3 @@ function getCSS(){
 	return style;
 
 }
-© 2018 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-API
-Training
-Shop
-Blog
-About
-Press h to open a hovercard with more details.
