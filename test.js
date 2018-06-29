@@ -305,7 +305,7 @@ function getCSS(){
 
 }
 
-
+// test обьекта
 
 
 function testObject() {
