@@ -1,0 +1,10 @@
+dbdict	 	создание\обновление таблиц
+fd		 	designer
+link 		связи
+fc 			formatcontrol (рассчеты,проверки)
+db 			доступ к таблицам
+triggers	триггеры
+operator()	возвращает 
+status				
+sch			schedule
+gl			глобальные переменные 

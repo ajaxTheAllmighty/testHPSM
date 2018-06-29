@@ -28,7 +28,7 @@ function SCFMultipleQueries(){
 		}
 		print(results);
 		/*print('results:');
-		for (var currentResult = 0; currentResult < results.length; currentResult++){										//Print template 
+		for (var currentResult = 0; currentResult < results.length; currentResult++){										//Print template
 			print(results[currentResult]['callback.contact']+'with id ='+results[currentResult]['incident.id'])				//results FALCON, JENNIFER with id = SD99944
 		}*/
 }
@@ -144,7 +144,7 @@ function buildNotification(){
 
 
 var name,dateCreated,dateUpdated,contact,isActive,whoUpdated;
-	name = $RECORD.name;	
+	name = $RECORD.name;
 	dateCreated = $RECORD.dateCreated;
 	dateUpdated = $RECORD.dateUpdated;
 	contact = $RECORD.contact;
@@ -188,7 +188,7 @@ function myLink(fRecord,fieldName,linkName,boolean1){
 	var rteValues = new SCDatum();
 
 	rteNames.setType(8);
-	rteNames.push("record"); 		
+	rteNames.push("record");
 	rteNames.push("name");
 	rteNames.push("string1");
 	rteNames.push("prompt");
@@ -202,11 +202,11 @@ function myLink(fRecord,fieldName,linkName,boolean1){
 	rteValues.push(boolean1);
 	print("rteNames="+rteNames);
 	print("rteValues="+rteValues);
-	
-	system.functions.rtecall("callrad", 
-								rteReturnValue, 
+
+	system.functions.rtecall("callrad",
+								rteReturnValue,
 								"us.link",
-								rteNames, 
+								rteNames,
 								rteValues,
 								true); //false to run in same thread, true to run in new thread	*/
 }
@@ -228,7 +228,7 @@ function buildHTML(){
 	//print(data);
 	var active;
 		sHtmlReturn += "<table class=\"main\">" + sCR;
-		// Table header          
+		// Table header
 		sHtmlReturn += "<tr><th><div tabindex=\"0\"> Название </div></th>"
 		sHtmlReturn += "<th><div tabindex=\"0\"> Дата создания </div></th>"
 		sHtmlReturn += "<th><div tabindex=\"0\"> Дата обновления </div></th>"
@@ -248,35 +248,35 @@ function buildHTML(){
 		}
 			sHtmlReturn += "<tr>";
 			if(data[i]['name']!=null){
-				sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['name']+"</td>";    
+				sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['name']+"</td>";
 			}
 			else{
-				sHtmlReturn += "<td class=\""+sRowClass+"\" > </td>";    
+				sHtmlReturn += "<td class=\""+sRowClass+"\" > </td>";
 			}
 			if(data[i]['dateCreated']!=null){
-				sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['dateCreated']+"</td>";    
+				sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['dateCreated']+"</td>";
 			}
 			else{
-				sHtmlReturn += "<td class=\""+sRowClass+"\" > </td>";    
+				sHtmlReturn += "<td class=\""+sRowClass+"\" > </td>";
 			}
 			if(data[i]['dateUpdated']!=null){
-				sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['dateUpdated']+"</td>";    
+				sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['dateUpdated']+"</td>";
 			}
 			else{
-				sHtmlReturn += "<td class=\""+sRowClass+"\" > </td>"; 
-			}   
+				sHtmlReturn += "<td class=\""+sRowClass+"\" > </td>";
+			}
 			sHtmlReturn += "<td class=\""+sRowClass+"\" >"+active+"</td>";
 			if(data[i]['contact']!=null){
-				sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['contact']+"</td>";    
+				sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['contact']+"</td>";
 			}
 			else{
-				sHtmlReturn += "<td class=\""+sRowClass+"\" > </td>"; 
+				sHtmlReturn += "<td class=\""+sRowClass+"\" > </td>";
 			}
 			if(data[i]['whoUpdated']!=null){
-				sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['whoUpdated']+"</td>";    
+				sHtmlReturn += "<td class=\""+sRowClass+"\" >"+data[i]['whoUpdated']+"</td>";
 			}
 			else{
-				sHtmlReturn += "<td class=\""+sRowClass+"\" > </td>"; 
+				sHtmlReturn += "<td class=\""+sRowClass+"\" > </td>";
 			}
 			//sHtmlReturn += "<td class=\""+sRowClass+"\" >"+fnull(attrib[j+5])+"</td>";
 			sHtmlReturn += "<tr>";
@@ -303,4 +303,14 @@ function getCSS(){
 
 	return style;
 
+}
+
+
+
+
+function testObject() {
+	var data = lib.c.$('infFilials').select('true').iterate(function (item) {
+			data.push(item);
+		})
+		print(data);
 }

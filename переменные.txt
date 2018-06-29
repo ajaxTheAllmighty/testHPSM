@@ -1,0 +1,9 @@
+Запись обьекта  
+
+	$file - formatcontrol (fc)
+	$File - link
+	$L.file - для всех 
+	record - triggers
+
+	
+	$lo.operator - вся инфа котороая есть в записи текущего оператора
